@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Card from './card';
 import PageHeader from "./pageHeader";
+import Counter from './counter';
 
 
 class Home extends Component {
@@ -43,6 +44,7 @@ class Home extends Component {
                     })
                 }
                 <button onClick={this.cbClick} className="btn btn-primary"> Func In CC </button>
+                <Counter />
             </div>
         ) 
     }

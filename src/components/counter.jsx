@@ -1,38 +1,40 @@
+import React, { Component } from "react";
 class Counter extends Component {
     state = { 
         counter: 0,
-     } 
-
-    setCounter = (value , counter) => {
-        let {counter} = this.state;
-        value = counter;
-        if (value > 0){
-            counter++
-            this.state({counter})
+     }
+     
+     setCounter = (value , counter) => {
+        if (value == '-'){
+            counter--;
+            this.setState({counter});
         }
-        else if (value < 0){
-            counter--
-            this.state({counter})
+        else if (value == '+'){
+            counter++;
+            this.setState({counter});
         }
-        renderCounter = () => {
-            if(this.state.counter < 0){
-                return <p>counter: {this.state.counter}</p>
-            }
-            else if(this.state.counter > 0){
-                return
-            }
+     }
+     renderCounter = (counter) => {
+        if (counter > 0) return
+        else if (counter < 0) {
+           return <p>Counter: {this.state.counter}</p>;
         }
-        renderBtn = (counter) => {
-            <div>
-                <button onClick={() => this.setCounter(counter++)} style="color: green"> + </button>
-                <button onClick={() => this.setCounter(counter--)} style="color: red"> - </button>
-            </div>
-        }
-    }
-    render() { 
+     }
+     renderBtn = (counter) => {
         return (
             <div>
-                
+                <button onClick={() => this.setCounter('+',counter)} className="btn btn-success"> + </button>
+                <button onClick={() => this.setCounter('-',counter)} className="btn btn-danger"> - </button>
+            </div>
+        )
+     }
+    render() {
+        let {counter} = this.state; 
+        console.log(counter);
+        return (
+            <div>
+                {this.renderCounter(counter)}
+                {this.renderBtn(counter)}
             </div>
         );
     }

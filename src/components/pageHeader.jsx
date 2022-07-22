@@ -1,10 +1,11 @@
 import React from "react";
 
-const PageHeader = () => {
+const PageHeader = props => {
+    const { title , subTitle } = props;
     return (
         <div>
-            <h1>First Title</h1>
-            <h2>First Title</h2>
+            <h1>{title}</h1>
+            <h2>{subTitle}</h2>
             <hr />
         </div>
     );
